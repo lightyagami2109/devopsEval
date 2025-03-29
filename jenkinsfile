@@ -1,0 +1,28 @@
+pipeline{
+    agentany
+
+    tools{
+        maven
+    }
+
+    stages{
+
+        stage(build){
+            step{
+                     sh 'mvn -B -DskipTests clean package'
+            }
+        }
+
+        stage(test){
+            step{
+                 sh 'mvn test'
+            }
+        }
+
+        stage(deliver){
+            step{
+                  sh './scripts/deliver.sh'
+            }
+        }
+    }
+}
