@@ -2,25 +2,25 @@ pipeline{
     agentany
 
     tools{
-        maven
+        maven 'maven'
     }
 
     stages{
 
         stage('build'){
-            step{
+            steps{
                      sh 'mvn -B -DskipTests clean package'
             }
         }
 
         stage('test'){
-            step{
+            steps{
                  sh 'mvn test'
             }
         }
 
         stage('deliver'){
-            step{
+            steps{
                   sh './scripts/deliver.sh'
             }
         }
