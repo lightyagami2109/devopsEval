@@ -7,19 +7,19 @@ pipeline{
 
     stages{
 
-        stage(build){
+        stage('build'){
             step{
                      sh 'mvn -B -DskipTests clean package'
             }
         }
 
-        stage(test){
+        stage('test'){
             step{
                  sh 'mvn test'
             }
         }
 
-        stage(deliver){
+        stage('deliver'){
             step{
                   sh './scripts/deliver.sh'
             }
